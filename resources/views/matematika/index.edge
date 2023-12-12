@@ -1,0 +1,33 @@
+@layout('layouts/main')
+
+@section('body')
+
+<div class="relative h-screen flex items-center justify-center">
+    <h5 class="top-0 absolute mb-2 text-4xl font-bold tracking-tight text-gray-400 dark:text-white">Tips And Trick
+        Mengerjakan Soal Matematika</h5>
+    <a href="{{route('matematika.create')}}"
+        class="absolute top-0 right-5 py-2.5 px-5 me-2 mt-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Create
+        New Content</a>
+    <div
+        class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+            src="img/mtk.jpg" alt="">
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            @each(matematika in matematikas)
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ matematika.title }} <a href="{{ route('matematika.edit', { id : matematika.id }) }}"><i class="fa-solid fa-pen p-5"></i></a> <a href=" {{ route('matematika.delete', {id : matematika.id  }) }}"><i class="fa-solid fa-trash-can"></i></a>
+            </h5>
+            <p class="items-center mb-3 font-normal text-gray-700 dark:text-gray-400">{{ matematika.content }}</p>
+            @endeach
+            <div class="flex justify-center space-x-2">
+                @each(anchor in matematikas.getUrlsForRange(1, matematikas.lastPage))
+                <a href="{{ anchor.url }}"
+                    class="px-4 py-2 text-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full">
+                    {{ anchor.page }}
+                </a>
+                @endeach
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
