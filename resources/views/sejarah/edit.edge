@@ -14,11 +14,10 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          EDIT POSTS
+          EDIT POSTS SWJARAH
         </div>
         <div class="card-body">
           <form action="{{ route('sejarah.update', { id: sejarah.id }) }}" method="POST">
-            {{ csrfField }}
             <div class="form-group">
               <label>TITLE</label>
               <input class="form-control" type="text" name="title" value="{{ sejarah.title }}" placeholder="Masukkan Judul Post">

@@ -1,0 +1,20 @@
+@layout('layouts/main')
+
+@section('body')
+
+<div class=" flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md max-w-md w-full">
+    <h1 class="text-2xl font-semibold mb-4">Register</h1>
+    <form action={{ route('register.auth') }} method="post">
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
+        <input type="email" name="email" id="email" class="mt-1 p-2 border rounded w-full" required>
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
+        <input type="password" name="password" id="password" class="mt-1 p-2 border rounded w-full" required>
+      </div>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Register</button>
+    </form>
+  </div>
+@endsection

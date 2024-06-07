@@ -14,11 +14,10 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          EDIT POSTS
+          EDIT POSTS BAHASA INDONESIA
         </div>
         <div class="card-body">
           <form action="{{ route('cerpen.update', { id: puisi.id }) }}" method="POST">
-            {{ csrfField }}
             <div class="form-group">
               <label>TITLE</label>
               <input class="form-control" type="text" name="title" value="{{ puisi.title }}" placeholder="Masukkan Judul Post">

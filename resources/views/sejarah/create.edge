@@ -13,11 +13,10 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          TAMBAH POSTS
+          TAMBAH POSTS SEJARAH
         </div>
         <div class="card-body">
           <form action="{{ route('sejarah.store') }}" method="POST">
-            {{ csrfField }}
             <div class="form-group">
               <label>TITLE</label>
               <input class="form-control" type="text" name="title" placeholder="Masukkan Judul Post">

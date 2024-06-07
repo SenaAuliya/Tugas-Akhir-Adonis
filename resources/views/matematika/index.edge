@@ -2,8 +2,10 @@
 
 @section('body')
 
+@include('components.navbar')
+
 <div class="relative h-screen flex items-center justify-center">
-    <h5 class="top-0 absolute mb-2 text-4xl font-bold tracking-tight text-gray-400 dark:text-white">Tips And Trick
+    <h5 class="top-0 absolute mb-2 text-4xl font-bold tracking-tight text-white dark:text-white">Tips And Trick
         Mengerjakan Soal Matematika</h5>
     <a href="{{route('matematika.create')}}"
         class="absolute top-0 right-5 py-2.5 px-5 me-2 mt-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Create

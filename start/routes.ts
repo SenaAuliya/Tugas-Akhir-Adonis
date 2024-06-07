@@ -18,44 +18,103 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from "@ioc:Adonis/Core/Route";
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
+Route.get("/", async ({ view }) => {
+  return view.render("welcome");
+});
+
+Route.get("/dashboard", async ({ view }) => {
+  return view.render("dashboard");
+}).middleware("auth");
+
+Route.post("login", "AuthController.login").as("login.auth");
+Route.post("register", "AuthController.register").as("register.auth");
+Route.get("/logout", "AuthController.logout").middleware("auth").as("logout");
+Route.get("/berhasillogout", async ({ view }) => {
+  return view.render("auth.logout");
 })
+  .middleware("auth");
 
-Route.get('/matematika', 'MatematikasController.index').as('matematika.index')
-Route.get('/matematika/create', 'MatematikasController.create').as('matematika.create')
-Route.post('/matematika/store', 'MatematikasController.store').as('matematika.store')
-Route.get('/matematika/edit/:id', 'MatematikasController.edit').as('matematika.edit')
-Route.post('/matematika/update/:id', 'MatematikasController.update').as('matematika.update')
-Route.get('/matematika/delete/:id', 'MatematikasController.delete').as('matematika.delete')
+Route.get("/login", async ({ view }) => {
+  return view.render("auth/login");
+}).as("login");
 
+Route.get("/register", async ({ view }) => {
+  return view.render("auth.register");
+});
 
-Route.get('/sejarah', 'SejarahsController.index').as('sejarah.index')
-Route.get('/sejarah/create', 'SejarahsController.create').as('sejarah.create')
-Route.post('/sejarah/store', 'SejarahsController.store').as('sejarah.store')
-Route.get('/sejarah/edit/:id', 'SejarahsController.edit').as('sejarah.edit')
-Route.post('/sejarah/update/:id', 'SejarahsController.update').as('sejarah.update')
-Route.get('/sejarah/delete/:id', 'SejarahsController.delete').as('sejarah.delete')
+Route.get("/matematika", "MatematikasController.index").as("matematika.index");
+Route.get("/matematika/create", "MatematikasController.create")
+  .as("matematika.create")
+  .middleware("auth");
+Route.post("/matematika/store", "MatematikasController.store").as(
+  "matematika.store"
+);
+Route.get("/matematika/edit/:id", "MatematikasController.edit").as(
+  "matematika.edit"
+);
+Route.post("/matematika/update/:id", "MatematikasController.update").as(
+  "matematika.update"
+);
+Route.get("/matematika/delete/:id", "MatematikasController.delete").as(
+  "matematika.delete"
+);
 
-Route.get('/cerpen', 'BahasaIndonesiasController.index').as('cerpen.index')
-Route.get('/cerpen/create', 'BahasaIndonesiasController.create').as('cerpen.create')
-Route.post('/cerpen/store', 'BahasaIndonesiasController.store').as('cerpen.store')
-Route.get('/cerpen/edit/:id', 'BahasaIndonesiasController.edit').as('cerpen.edit')
-Route.post('/cerpen/update/:id', 'BahasaIndonesiasController.update').as('cerpen.update')
-Route.get('/cerpen/delete/:id', 'BahasaIndonesiasController.delete').as('cerpen.delete')
+Route.get("/sejarah", "SejarahsController.index").as("sejarah.index");
+Route.get("/sejarah/create", "SejarahsController.create")
+  .as("sejarah.create")
+  .middleware("auth");
+Route.post("/sejarah/store", "SejarahsController.store").as("sejarah.store");
+Route.get("/sejarah/edit/:id", "SejarahsController.edit").as("sejarah.edit");
+Route.post("/sejarah/update/:id", "SejarahsController.update").as(
+  "sejarah.update"
+);
+Route.get("/sejarah/delete/:id", "SejarahsController.delete").as(
+  "sejarah.delete"
+);
 
-Route.get('/inggris', 'BahasaInggrisesController.index').as('inggris.index')
-Route.get('/inggris/create', 'BahasaInggrisesController.create').as('inggris.create')
-Route.post('/inggris/store', 'BahasaInggrisesController.store').as('inggris.store')
-Route.get('/inggris/edit/:id', 'BahasaInggrisesController.edit').as('inggris.edit')
-Route.post('/inggris/update/:id', 'BahasaInggrisesController.update').as('inggris.update')
-Route.get('/inggris/delete/:id', 'BahasaInggrisesController.delete').as('inggris.delete')
+Route.get("/cerpen", "BahasaIndonesiasController.index").as("cerpen.index");
+Route.get("/cerpen/create", "BahasaIndonesiasController.create")
+  .as("cerpen.create")
+  .middleware("auth");
+Route.post("/cerpen/store", "BahasaIndonesiasController.store").as(
+  "cerpen.store"
+);
+Route.get("/cerpen/edit/:id", "BahasaIndonesiasController.edit").as(
+  "cerpen.edit"
+);
+Route.post("/cerpen/update/:id", "BahasaIndonesiasController.update").as(
+  "cerpen.update"
+);
+Route.get("/cerpen/delete/:id", "BahasaIndonesiasController.delete").as(
+  "cerpen.delete"
+);
 
-Route.get('/jawa', 'BahasaJawasController.index').as('jawa.index')
-Route.get('/jawa/create', 'BahasaJawasController.create').as('jawa.create')
-Route.post('/jawa/store', 'BahasaJawasController.store').as('jawa.store')
-Route.get('/jawa/edit/:id', 'BahasaJawasController.edit').as('jawa.edit')
-Route.post('/jawa/update/:id', 'BahasaJawasController.update').as('jawa.update')
-Route.get('/jawa/delete/:id', 'BahasaJawasController.delete').as('jawa.delete')
+Route.get("/inggris", "BahasaInggrisesController.index").as("inggris.index");
+Route.get("/inggris/create", "BahasaInggrisesController.create")
+  .as("inggris.create")
+  .middleware("auth");
+Route.post("/inggris/store", "BahasaInggrisesController.store").as(
+  "inggris.store"
+);
+Route.get("/inggris/edit/:id", "BahasaInggrisesController.edit").as(
+  "inggris.edit"
+);
+Route.post("/inggris/update/:id", "BahasaInggrisesController.update").as(
+  "inggris.update"
+);
+Route.get("/inggris/delete/:id", "BahasaInggrisesController.delete").as(
+  "inggris.delete"
+);
+
+Route.get("/jawa", "BahasaJawasController.index").as("jawa.index");
+Route.get("/jawa/create", "BahasaJawasController.create")
+  .as("jawa.create")
+  .middleware("auth");
+Route.post("/jawa/store", "BahasaJawasController.store").as("jawa.store");
+Route.get("/jawa/edit/:id", "BahasaJawasController.edit").as("jawa.edit");
+Route.post("/jawa/update/:id", "BahasaJawasController.update").as(
+  "jawa.update"
+);
+Route.get("/jawa/delete/:id", "BahasaJawasController.delete").as("jawa.delete");
